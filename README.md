@@ -4,9 +4,8 @@
 - [x] Render basic text inside shapes
 - [x] Add labels to groups
 - [ ] Convert MD to HTML
-- [ ] Proper coloring
+- [x] Proper coloring
 - [ ] Edges
-- [ ]
 
 ## Installation
 

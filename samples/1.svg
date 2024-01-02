@@ -3,21 +3,13 @@
         svg {
             font-family: monospace;
             --color-red-rgb: rgb(233, 49, 71);
-            --color-red: #e93147;
             --color-orange-rgb: rgb(236, 117, 0);
-            --color-orange: #ec7500;
             --color-yellow-rgb: rgb(224, 172, 0);
-            --color-yellow: #e0ac00;
             --color-green-rgb: rgb(8, 185, 78);
-            --color-green: #08b94e;
             --color-cyan-rgb: rgb(0, 191, 188);
-            --color-cyan: #00bfbc;
             --color-blue-rgb: rgb(8, 109, 221);
-            --color-blue: #086ddd;
             --color-purple-rgb: rgb(120, 82, 238);
-            --color-purple: #7852ee;
             --color-pink-rgb: rgb(213, 57, 132);
-            --color-pink: #d53984;
             --canvas-color-1: var(--color-red-rgb);
             --canvas-color-2: var(--color-orange-rgb);
             --canvas-color-3: var(--color-yellow-rgb);
@@ -53,14 +45,20 @@
 
          .mode-canvas-color-1 {
             stroke: var(--canvas-color-1);
+            fill: var(--canvas-color-1);
+            fill-opacity: 0.1;
          }
 
          .mode-canvas-color-2 {
             stroke: var(--canvas-color-2);
+            fill: var(--canvas-color-2);
+            fill-opacity: 0.1;
          }
 
          .mode-canvas-color-3 {
             stroke: var(--canvas-color-3);
+            fill: var(--canvas-color-3);
+            fill-opacity: 0.1;
          }
 
          .canvas-display-path {

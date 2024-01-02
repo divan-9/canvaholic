@@ -35,7 +35,7 @@
   (list
    [:rect {:x (:x node)
            :y (:y node)
-           :class "node"
+           :class ["node" (str "mode-canvas-color-" (:color node))]
            :width (:width node)
            :height (:height node)}]
    [:foreignObject
@@ -45,7 +45,7 @@
      :height (:height node)}
     [:div.node-content
      {:xmlns "http://www.w3.org/1999/xhtml"}
-     (:text node)]]))
+     [:pre (:text node)]]]))
 
 (defn- generate-nodes
   [nodes]
@@ -62,13 +62,59 @@
     [:style "
      svg {
         font-family: monospace;
+        fill: transparent;
+        --canvas-color: rgb(192,192,192);
+        --color-red-rgb: rgb(233, 49, 71);
+        --color-orange-rgb: rgb(236, 117, 0);
+        --color-yellow-rgb: rgb(224, 172, 0);
+        --color-green-rgb: rgb(8, 185, 78);
+        --color-cyan-rgb: rgb(0, 191, 188);
+        --color-blue-rgb: rgb(8, 109, 221);
+        --color-purple-rgb: rgb(120, 82, 238);
+        --color-pink-rgb: rgb(213, 57, 132);
+        --canvas-color-1: var(--color-red-rgb);
+        --canvas-color-2: var(--color-orange-rgb);
+        --canvas-color-3: var(--color-yellow-rgb);
+        --canvas-color-4: var(--color-green-rgb);
+        --canvas-color-5: var(--color-cyan-rgb);
+        --canvas-color-6: var(--color-purple-rgb);
      }
 
-     rect.node {
-        fill: transparent;
-        stroke: rgb(192,192,192);
+     .mode-canvas-color-1 {
+        --canvas-color: var(--canvas-color-1);
+        fill: var(--canvas-color);
+     }
+
+     .mode-canvas-color-2 {
+        --canvas-color: var(--canvas-color-2);
+        fill: var(--canvas-color);
+     }
+
+     .mode-canvas-color-3 {
+        --canvas-color: var(--canvas-color-3);
+        fill: var(--canvas-color);
+     }
+
+     .mode-canvas-color-4 {
+        --canvas-color: var(--canvas-color-4);
+        fill: var(--canvas-color);
+     }
+
+     .mode-canvas-color-5 {
+        --canvas-color: var(--canvas-color-5);
+        fill: var(--canvas-color);
+     }
+
+     .mode-canvas-color-6 {
+        --canvas-color: var(--canvas-color-6);
+        fill: var(--canvas-color);
+     }
+
+     .node {
         stroke-width: 2px;
         rx: 5px;
+        stroke: var(--canvas-color);
+        fill-opacity: 0.1;
      }
 
      div.node-content {
@@ -83,6 +129,7 @@
 
      .canvas-group-label {
         font-size: 22.5px;
+        fill: black;
      }
 
      "]
