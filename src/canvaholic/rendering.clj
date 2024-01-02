@@ -10,7 +10,27 @@
    (get-in canvas [:boundaries :width])
    (get-in canvas [:boundaries :height])])
 
-(defn- generate-node
+(defmulti generate-node :type)
+
+(defmethod generate-node "file"
+  [node]
+  nil)
+
+(defmethod generate-node "group"
+  [node]
+  (list
+   [:rect {:x (:x node)
+           :y (:y node)
+           :class "node"
+           :width (:width node)
+           :height (:height node)}]
+   [:text
+    {:x (+ (:x node) 4)
+     :y (- (:y node) 8)
+     :class "canvas-group-label"}
+    (:label node)]))
+
+(defmethod generate-node "text"
   [node]
   (list
    [:rect {:x (:x node)
@@ -40,6 +60,10 @@
     :xmlns "http://www.w3.org/2000/svg"}
    (list
     [:style "
+     svg {
+        font-family: monospace;
+     }
+
      rect.node {
         fill: transparent;
         stroke: rgb(192,192,192);
@@ -53,10 +77,14 @@
         padding-right: 24px;
         line-height: 22.5px;
         font-size: 18px;
-        font-family: monospace;
         color: rgb(38, 38, 38);
         padding: 10px;
      }
+
+     .canvas-group-label {
+        font-size: 22.5px;
+     }
+
      "]
     (generate-nodes (:nodes canvas)))])
 

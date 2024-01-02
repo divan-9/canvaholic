@@ -15,6 +15,6 @@
     (println "The program is supposed to be called in pipe. Try 'cat file | canvaholic'")))
 
 (comment
-
-         ;
-  )
+  (let
+   [nodes (:nodes (parse-canvas (slurp "/Users/dmitryivanov/dev/mind/Demo.canvas")))]
+    (filter #(= (:type %) "group") nodes)))

@@ -2,11 +2,11 @@
 
 - [x] Render basic shapes
 - [x] Render basic text inside shapes
-- [ ] Add labels to groups
+- [x] Add labels to groups
 - [ ] Convert MD to HTML
 - [ ] Proper coloring
 - [ ] Edges
-- [ ] 
+- [ ]
 
 ## Installation
 

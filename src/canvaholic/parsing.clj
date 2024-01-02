@@ -36,6 +36,10 @@
       :type (el "type")
       :text (el "text")
       :width (el "width")
+      :color (el "color")
+      :raw el
+      :id (el "id")
+      :label (el "label")
       :height (el "height")})
    raw-nodes))
 
@@ -48,11 +52,14 @@
    d))
 
 (defn- normalize
-  [{:keys [boundaries nodes]}]
+  [canvas]
   (let
-   [diff (select-keys boundaries [:x :y])]
-    {:boundaries (transform boundaries diff -)
-     :nodes (map #(transform % diff -) nodes)}))
+   [boundaries (:boundaries canvas)
+    nodes (:nodes canvas)
+    diff (select-keys boundaries [:x :y])]
+    (-> canvas
+        (assoc :boundaries (transform boundaries diff -))
+        (assoc :nodes (map #(transform % diff -) nodes)))))
 
 (defn parse-canvas
   "Parse the given string into a canvas."
@@ -62,6 +69,7 @@
         nodes (convert-nodes raw-nodes)
         boundaries (get-boundaries nodes)
         canvas {:boundaries boundaries
+                :edges (raw "edges")
                 :nodes nodes}]
     (normalize canvas)))
 
