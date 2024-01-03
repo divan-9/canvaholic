@@ -16,5 +16,7 @@
 
 (comment
   (let
-   [nodes (:nodes (parse-canvas (slurp "/Users/dmitryivanov/dev/mind/Demo.canvas")))]
-    (filter #(= (:type %) "group") nodes)))
+   [edges (:edges (parse-canvas (slurp "/Users/dmitryivanov/dev/mind/Demo.canvas")))]
+    edges)
+  ;
+  )

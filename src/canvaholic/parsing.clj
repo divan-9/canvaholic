@@ -61,15 +61,30 @@
         (assoc :boundaries (transform boundaries diff -))
         (assoc :nodes (map #(transform % diff -) nodes)))))
 
+(defn- convert-edges
+  [raw-edges]
+  (map
+   (fn [el]
+     {:fromNode (el "fromNode")
+      :toNode (el "toNode")
+      :fromSide (el "fromSide")
+      :toSide (el "toSide")
+      :color (el "color")
+      :id (el "id")
+      :raw el})
+   raw-edges))
+
 (defn parse-canvas
   "Parse the given string into a canvas."
   [canvas-string]
   (let [raw (json/read-str canvas-string)
         raw-nodes (raw "nodes")
+        raw-edges (raw "edges")
         nodes (convert-nodes raw-nodes)
+        edges (convert-edges raw-edges)
         boundaries (get-boundaries nodes)
         canvas {:boundaries boundaries
-                :edges (raw "edges")
+                :edges edges
                 :nodes nodes}]
     (normalize canvas)))
 
