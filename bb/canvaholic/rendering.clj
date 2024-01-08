@@ -8,8 +8,7 @@
   [:text {:x (+ (get-in node [:rect :x]) 4)
           :y (-  (get-in node [:rect :y]) 8)
           :font-size "22.5px"
-          :fill "black"
-          :class "canvas-group-label"}
+          :fill "black"}
    (:label node)])
 
 (defn- generate-group-rect
