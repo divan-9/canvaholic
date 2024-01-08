@@ -1,6 +1,6 @@
 (ns canvaholic.reading
   (:require
-   [clojure.data.json :as json]))
+   [cheshire.core :as json]))
 
 (def ObsidianNode
   [:map
@@ -32,4 +32,4 @@
   "Deserialize the given string into a canvas."
   {:malli/schema [:=> [:cat :string] ObsidianCanvas]}
   [canvas-string]
-  (json/read-str canvas-string))
+  (json/parse-string canvas-string))
