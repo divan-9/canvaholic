@@ -1,4 +1,4 @@
-# canvaholic/canvaholic
+# canvaholic
 
 This program is aimed to generate SVG basing on Obsidian Canvas
 
